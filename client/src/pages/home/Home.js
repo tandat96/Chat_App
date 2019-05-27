@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 
-import ChatSocketServer from '../../utils/ChatSocketServer.js.js';
-import ChatHttpServer from '../../utils/ChatHttpServer.js.js';
+import ChatSocketServer from '../../utils/ChatSocketServer.js';
+import ChatHttpServer from '../../utils/ChatHttpServer.js';
 
 import ChatList from './chat-list/ChatList';
 import Conversation from './conversation/Conversation';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import ChatHttpServer from '../../../utils/ChatHttpServer.js.js';
-import ChatSocketServer from '../../../utils/ChatSocketServer.js.js';
+import ChatHttpServer from '../../../utils/ChatHttpServer.js';
+import ChatSocketServer from '../../../utils/ChatSocketServer.js';
 
 import './Conversation.css';
 import { TIMEOUT } from 'dns';

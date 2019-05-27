@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ChatSocketServer from '../../../utils/ChatSocketServer.js.js';
+import ChatSocketServer from '../../../utils/ChatSocketServer.js';
 import "./ChatList.css";
 
 class ChatList extends Component {
