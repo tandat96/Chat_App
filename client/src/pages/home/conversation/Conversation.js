@@ -31,9 +31,13 @@ class Conversation extends Component {
     // after update seen funtions
     if(this.state.conversations !== prevState.conversations){
       this.getMessages();
+      // this.scrollMessageContainer();
+
     }
     if (prevProps.newSelectedUser === null || (this.props.newSelectedUser.id !== prevProps.newSelectedUser.id)) {
       this.getMessages();
+      this.scrollMessageContainer();
+
     }
   }
 
@@ -65,7 +69,7 @@ class Conversation extends Component {
         this.setState({
           conversations: messageResponse.messages,
         });
-        this.scrollMessageContainer();
+        // this.scrollMessageContainer();
       } else {
         alert('Unable to fetch messages');
       }
@@ -130,6 +134,8 @@ class Conversation extends Component {
   }
   // *********************************
   getMessageUI() {
+    this.scrollMessageContainer();
+
     return (
       <ul ref={this.messageContainer} className="message-thread">
         {
@@ -139,13 +145,20 @@ class Conversation extends Component {
                 {conversation.message}
               </div>
               <div className={this.state.conversations.indexOf(conversation) === (this.state.conversations.length - 1) ? 'last' : 'not-last'}>
-                <div className={(conversation.seen) ? 'seen' : 'unread'}>seen</div>
+                <div className={(conversation.seen && this.props.userId===conversation.fromUserId) ? 'seen' : 'unread'}>seen</div>
+                <div id="wave">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+          </div>
               </div>
+              
             </li>
           )
         }
       </ul>
     )
+    
   }
 
   getInitiateConversationUI() {
@@ -172,6 +185,7 @@ class Conversation extends Component {
       this.getMessages();
     }
   }
+  
 
   render() {
     const { messageLoading, selectedUser } = this.state;
@@ -186,11 +200,12 @@ class Conversation extends Component {
               Chatting with {this.props.newSelectedUser !== null ? this.props.newSelectedUser.username : '----'}
             </div>
             {this.state.conversations.length > 0 ? this.getMessageUI() : this.getInitiateConversationUI()}
+            
           </div>
 
           <div className="message-typer">
             <form>
-              <textarea className="message form-control" placeholder="Type and hit Enter" onKeyPress={this.sendMessage} onClick={this.seen}>
+              <textarea id="typing" className="message form-control" placeholder="Type and hit Enter" onKeyPress={this.sendMessage} onClick={this.seen}>
               </textarea>
             </form>
           </div>

@@ -94,10 +94,10 @@ class Home extends Component {
 
         <main role="main" className="container content" >
           <div className="row chat-content">
-            <div className="col-3 chat-list-container">
+            <div className="col-md-4 chat-list-container">
               {this.getChatListComponent()}
             </div>
-            <div className="col-8 message-container">
+            <div className="col-md-8 message-container">
               {this.getChatBoxComponent()}
             </div>
           </div>

@@ -49,6 +49,7 @@ class ChatSocketServer {
         this.socket.emit('seen-meesage')
     }
     //
+
 }
 
 export default new ChatSocketServer()

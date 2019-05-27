@@ -29,7 +29,6 @@
 
 .chat-list-container {
     padding: 25px 15px;
-    height: 100%;
     -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
@@ -37,4 +36,9 @@
 
 .message-container {
     height: 100%;
+}
+@media (max-width: 767px){
+    .user-list{
+        display: -webkit-box;
+    }
 }
