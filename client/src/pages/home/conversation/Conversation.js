@@ -5,6 +5,7 @@ import ChatSocketServer from '../../../utils/ChatSocketServer.js';
 
 import './Conversation.css';
 import { TIMEOUT } from 'dns';
+import dots from './dots.js';
 
 class Conversation extends Component {
 
@@ -13,7 +14,8 @@ class Conversation extends Component {
     this.state = {
       messageLoading: true,
       conversations: [],
-      selectedUser: null
+      selectedUser: null,
+      dots:''
     }
     this.messageContainer = React.createRef();
   }
@@ -21,6 +23,7 @@ class Conversation extends Component {
   componentDidMount() {
     ChatSocketServer.receiveMessage();
     ChatSocketServer.eventEmitter.on('add-message-response', this.receiveSocketMessages);
+    ChatSocketServer.eventEmitter.on('who-typing', this.whoTyping);
   }
   
   componentWillUnmount() {
@@ -147,9 +150,7 @@ class Conversation extends Component {
               <div className={this.state.conversations.indexOf(conversation) === (this.state.conversations.length - 1) ? 'last' : 'not-last'}>
                 <div className={(conversation.seen && this.props.userId===conversation.fromUserId) ? 'seen' : 'unread'}>seen</div>
                 <div id="wave">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
+              {this.dots}
           </div>
               </div>
               
@@ -185,6 +186,18 @@ class Conversation extends Component {
       this.getMessages();
     }
   }
+  typing = ()=>{
+    ChatSocketServer.Typing()
+  }
+  whoTyping= ()=>{
+    console.log('aaaaaaaaaa');
+    // this.dots.push(            <>
+    //   <span class="dot"></span>
+    //    <span class="dot"></span>
+    //    <span class="dot"></span>
+    //  </>)
+    //  this.setState({ dots: '' });
+  }
   
 
   render() {
@@ -205,7 +218,7 @@ class Conversation extends Component {
 
           <div className="message-typer">
             <form>
-              <textarea id="typing" className="message form-control" placeholder="Type and hit Enter" onKeyPress={this.sendMessage} onClick={this.seen}>
+              <textarea id="typing" className="message form-control" placeholder="Type and hit Enter" onKeyPress={this.sendMessage} onClick={this.seen} onFocus={this.typing}>
               </textarea>
             </form>
           </div>

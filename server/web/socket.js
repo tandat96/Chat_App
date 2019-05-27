@@ -137,7 +137,18 @@ class Socket {
 					console.log(error);
 				}
 			});
-			//
+			//typing
+			socket.on('typing-message', async (userId)=>{
+				try{
+					await socket.emit('who-typing')
+					console.log('typig');
+
+				} catch(error){
+					console.log(error);
+
+				};
+				
+			})
 		});
 
 

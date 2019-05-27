@@ -48,7 +48,14 @@ class ChatSocketServer {
     SeenMesseage(){   
         this.socket.emit('seen-meesage')
     }
-    //
+    //Typing
+    Typing(){
+        this.socket.emit('typing-message');
+        this.socket.on('who-typing', ()=>{
+            console.log('on typing');
+            this.eventEmitter.emit('who-typing')
+        })
+    }
 
 }
 
