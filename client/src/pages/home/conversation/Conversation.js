@@ -134,7 +134,7 @@ class Conversation extends Component {
       <ul ref={this.messageContainer} className="message-thread">
         {
           this.state.conversations.map((conversation, index) =>
-            <li className={`${this.alignMessages(conversation.toUserId) ? 'align-right' : ''}`} key={index}>
+            <li className={`${this.alignMessages(conversation.toUserId) ? 'align-right' : 'align-left'}`} key={index}>
               <div className='mssbox'>
                 {conversation.message}
               </div>

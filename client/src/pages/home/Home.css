@@ -1,8 +1,18 @@
 .app-header {
-    background-color: powderblue;
-    padding: 1.5vh 5vh;
-    height: 10vh;
+    background-color: #181733;
+    color: white;
+
 }
+.app-header::after{
+    display: block;
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    height: .4rem;
+    background: linear-gradient(90deg,#154284 0,#cd122d);
+}
+
 
 .app-header nav {
     float: left;
